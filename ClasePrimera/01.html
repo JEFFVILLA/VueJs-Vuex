@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{titulo}}</h1>
+      <input v-model="nombreNuevo" @keyup.enter="agregarFruta()" type="text" />
+      <input v-model="cantidadNueva" type="text" />
+      <button @click="agregarFruta()">
+        Agregar Fruta
+      </button>
+      <ul>
+        <li v-for="(item, index) in frutas" :key="index">
+          <input v-model="item.nombre" type="text" />
+          <input v-model.number="item.cantidad" type="number" />
+          <button @click="item.cantidad = item.cantidad + 1">+</button>
+          <button @click="item.cantidad = item.cantidad - 1">+</button>
+          <span v-if="item.cantidad === 0 "> Sin Stock </span>
+        </li>
+      </ul>
+
+      <h4>Total: {{sumarFrutas}}</h4>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="01.js"></script>
+  </body>
+</html>
